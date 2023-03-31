@@ -74,7 +74,7 @@ class COSContentsManager(GenericContentsManager):
     ).tag(config=True)
 
     def __init__(self, *args, **kwargs):
-        super(S3ContentsManager, self).__init__(*args, **kwargs)
+        super(COSContentsManager, self).__init__(*args, **kwargs)
 
         self.run_init_s3_hook()
         self.bucket = validate_bucket(self.bucket, self.log)
