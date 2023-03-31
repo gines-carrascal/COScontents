@@ -11,10 +11,14 @@ import sys
 import s3fs
 from botocore.exceptions import ClientError
 from tornado.web import HTTPError
-from traitlets import Any
 
 from .genericfs import GenericFS, NoSuchFile
-from .ipycompat import Unicode, Bool
+
+from traitlets import (
+    Any,
+    Bool,
+    Unicode,
+)
 
 SAMPLE_ACCESS_POLICY = """
 {{
