@@ -241,7 +241,7 @@ class GenericContentsManager(ContentsManager, HasTraits):
             return s3_detail
 
         tasks = [self.fs.fs.loop.create_task(s3_detail_metadata(detail)) for detail in s3_details]
-        details_with_meta = await asyncio.gather(*tasks, loop=self.fs.fs.loop)
+        details_with_meta = await asyncio.gather(*tasks)#, loop=self.fs.fs.loop)
         return details_with_meta
 
     def convert_s3_details_to_models(self, s3_details):
