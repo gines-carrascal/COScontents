@@ -17,6 +17,7 @@ NAME = "coscontents"
 
 REQUIRES = [
     "ibm-cos-sdk>=2.13.0",
+    "s3fs",
     "jupyter_server",
     "nbformat",
     "numpy",

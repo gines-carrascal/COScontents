@@ -1,3 +1,3 @@
-from coscontents.coscontents import COSContentsManager
+from .coscontents import COSContentsManager
 
 __all__ = ("COSContentsManager",)
