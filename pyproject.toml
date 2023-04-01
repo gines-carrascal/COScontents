@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "coscontents"
-version = "2023.1001"
+version = "2023.1003"
 description = "COS Contents Manage for storing Jupyterlab Notebooks in IBM Cloud Object Storage"
 readme = "README.md"
 authors = [{ name = "Gines Carrascal", email = "gines_carrascal@es.ibm.com" }]
@@ -32,7 +32,7 @@ requires-python = ">=3.7.4"
 dev = ["black", "bumpver", "isort", "pip-tools", "pytest"]
 
 [tool.bumpver]
-current_version = "2023.1002"
+current_version = "2023.1003"
 version_pattern = "YYYY.BUILD[-TAG]"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = true
