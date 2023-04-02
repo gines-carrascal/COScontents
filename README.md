@@ -11,7 +11,7 @@ Currently only python 3.7 is supported.
 To use the content manager, first you must install it:
 
 ```
-pip install .
+pip install coscontents
 ```
 
 > Prefer installation via pip. The old way `python setup.up install` fetches dev versions of packages and may
@@ -76,6 +76,53 @@ expect, because it has to communicate with the remote IBM Cloud server.
 
 TODO explain
 
+Features
+-----
+- Mix and match different content managers for different directories 
+- Easily move files between different content managers (i.e local files to s3 backed manager) 
+- Path validation to keep consistent naming scheme and/or prevent illegal characters
+
+Usage
+-----
+
+The following code snippet creates a HybridContentsManager with two directories with different content managers. 
+
+```python
+c.ServerApp.contents_manager_class = HybridContentsManager
+
+c.HybridContentsManager.manager_classes = {
+    # NOTE: LargFileManager only exists in notebook > 5
+    # If using notebook < 5, use FileContentManager instead
+    "": LargeFileManager,
+    "COS": COSContentsManager
+}
+
+# Each item will be passed to the constructor of the appropriate content manager.
+c.HybridContentsManager.manager_kwargs = {
+    # Args for root LargeFileManager
+    "": {
+        "root_dir": read_only_dir
+    },
+    # Args for the shared COSContentsManager directory
+    "COS": {
+        "access_key_id": ...,
+        "secret_access_key": ...,
+        "endpoint_url":  ...,
+        "bucket": ...,
+        "region_name": ...
+    },
+}
+
+def only_allow_notebooks(path):
+  return path.endswith('.ipynb')
+
+# Only allow notebook files to be stored in COS
+c.HybridContentsManager.path_validators = {
+    "COS": only_allow_notebooks
+}
+```
+
+
 ### Listing
 
 The listings show up under the "COS" folder of the notebook file browser.
@@ -86,4 +133,5 @@ This code is based on:
 
 * [https://github.com/danielfrg/s3contents]
 * [https://github.com/TileDB-Inc/TileDB-Cloud-Jupyter-Contents]
+* [https://github.com/viaduct-ai/hybridcontents]
 
