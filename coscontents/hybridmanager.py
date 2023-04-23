@@ -6,7 +6,10 @@ from tornado.web import HTTPError
 
 from jupyter_server.services.contents.manager import ContentsManager
 
-from traitlets import Dict
+from traitlets import (
+    Dict,
+    HasTraits,
+)
 
 from .api_utils import (
     base_directory_model,
@@ -126,7 +129,7 @@ def DEFAULT_PATH_VALIDATOR(path):
     return True
 
 
-class HybridContentsManager(ContentsManager):
+class HybridContentsManager(ContentsManager,HasTraits):
     """ContentsManager subclass that delegates specific subdirectories to other
     ContentsManager/Checkpoints pairs."""
 

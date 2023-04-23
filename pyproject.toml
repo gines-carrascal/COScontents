@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "coscontents"
-version = "2023.1004"
+version = "2023.1005"
 description = "COS Contents Manage for storing Jupyterlab Notebooks in IBM Cloud Object Storage"
 readme = "README.md"
 authors = [{ name = "Gines Carrascal", email = "gines_carrascal@es.ibm.com" }]
