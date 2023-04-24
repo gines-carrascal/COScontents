@@ -25,7 +25,7 @@ def _resolve_path(path, manager_dict):
 
     Returns a triple of (prefix, manager, manager_relative_path).
     """
-    path = normalize_api_path(path)
+    path = normalize_api_path(path).strip('/')
     parts = path.split('/')
 
     # Try to find a sub-manager for the first subdirectory.
